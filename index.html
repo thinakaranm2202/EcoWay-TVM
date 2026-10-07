@@ -1,0 +1,896 @@
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>EcoWay TVM – Smart Air. Smart Mobility. A Greener Tiruvannamalai.</title>
+  <meta name="description" content="AI-Powered Environmental Monitoring and Smart Mobility Telemetry System for Tiruvannamalai. Edge IoT sensing, Deep Learning AQI forecasting, and intelligent traffic management.">
+  
+  <!-- Favicon icon representation -->
+  <link rel="icon" type="image/jpeg" href="assets/logo.jpg">
+
+  <!-- Google Fonts: Plus Jakarta Sans -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Outfit:wght@400;600;800&display=swap" rel="stylesheet">
+
+  <!-- Font Awesome 6 Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" integrity="sha512-DTOQO9RWCH3ppGqcWaEA1BIZOC6xxalwEsw9c2QQeAIftl+Vegovlnee1c9QX4TctnWMn13TZye+giMm8e2LwA==" crossorigin="anonymous" referrerpolicy="no-referrer" />
+
+  <!-- Leaflet CSS for Smart GIS Map -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY=" crossorigin=""/>
+
+  <!-- Custom Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+  <!-- ==========================================================================
+       Site Navigation Bar
+       ========================================================================== -->
+  <header class="site-navbar">
+    <div class="container nav-inner">
+      <a href="#home" class="brand-wrapper">
+        <div class="brand-logo-image">
+          <img src="assets/logo.jpg" alt="EcoWay TVM Logo" class="brand-logo-img">
+        </div>
+
+  <div class="brand-meta">
+    <div class="brand-name">
+      EcoWay <span>TVM</span>
+      <span class="brand-badge">AI IoT</span>
+    </div>
+
+    <span class="brand-tagline-micro">
+      Smart Air &bull; Smart Mobility &bull; Tiruvannamalai
+    </span>
+  </div>
+
+</a>
+
+      <!-- Desktop Nav Links -->
+      <nav>
+        <ul class="nav-links" id="navLinks">
+          <li><a href="#home" class="nav-link active"><i class="fa-solid fa-house"></i> Home</a></li>
+          <li><a href="#dashboard" class="nav-link"><i class="fa-solid fa-chart-line"></i> Live Dashboard</a></li>
+          <li><a href="#ai-prediction" class="nav-link"><i class="fa-solid fa-brain"></i> AI Prediction</a></li>
+          <li><a href="#smart-map" class="nav-link"><i class="fa-solid fa-map-location-dot"></i> Smart Map</a></li>
+          <li><a href="#alerts" class="nav-link"><i class="fa-solid fa-triangle-exclamation"></i> Alerts & Traffic</a></li>
+          <li><a href="#about" class="nav-link"><i class="fa-solid fa-circle-info"></i> About</a></li>
+        </ul>
+      </nav>
+
+      <!-- Nav Actions -->
+      <div class="nav-actions">
+        <!-- Karthigai Deepam Festival Mode Toggle -->
+        <button id="festivalModeNavBtn" class="btn-festival-toggle" title="Toggle Karthigai Deepam Festival Surge Protocol">
+          <i class="fa-solid fa-fire-flame-curved"></i>
+          <span>Festival Mode</span>
+        </button>
+
+        <a href="#dashboard" class="btn-nav-primary">
+          <i class="fa-solid fa-satellite-dish"></i>
+          <span>Live Feeds</span>
+        </a>
+
+        <!-- Mobile Drawer Toggle -->
+        <button class="mobile-toggle" id="mobileMenuBtn" aria-label="Toggle Navigation Menu">
+          <i class="fa-solid fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <!-- ==========================================================================
+       Hero Section: Arunachala Hill Silhouette & System Overview
+       ========================================================================== -->
+  <section class="hero-section" id="home">
+    <!-- Arunachala Mountain & Temple Skyline Silhouette Graphic -->
+    <div class="hero-silhouette-container">
+      <svg viewBox="0 0 1440 320" fill="none" xmlns="http://www.w3.org/2000/svg" preserveAspectRatio="none">
+        <!-- Distant Mountain Ridge -->
+        <path d="M0,280 L180,240 L340,190 L520,230 L720,110 L940,210 L1150,170 L1320,240 L1440,270 L1440,320 L0,320 Z" fill="rgba(16, 185, 129, 0.08)"/>
+        <!-- Arunachala Sacred Hill Main Peak Silhouette -->
+        <path d="M0,320 L120,285 L280,230 L450,170 L600,110 L720,40 L840,110 L990,190 L1180,240 L1350,290 L1440,320 Z" fill="rgba(15, 23, 42, 0.95)"/>
+        <!-- Sacred Beacon / Maha Deepam Flame Glow at Summit (x=720, y=40) -->
+        <circle cx="720" cy="38" r="7" fill="#fbbf24" opacity="0.9" />
+        <circle cx="720" cy="38" r="22" fill="#f59e0b" opacity="0.25" />
+        <!-- Temple Gopuram Outline Silhouettes -->
+        <!-- Raja Gopuram (East) -->
+        <path d="M780,320 L780,210 L790,210 L790,195 L800,195 L800,180 L807,170 L814,180 L814,195 L824,195 L824,210 L834,210 L834,320 Z" fill="#0b1324" opacity="0.9"/>
+        <!-- Girivalam Path Telemetry Nodes (glowing points around hill base) -->
+        <circle cx="280" cy="230" r="3.5" fill="#10b981" />
+        <circle cx="450" cy="170" r="3.5" fill="#10b981" />
+        <circle cx="600" cy="110" r="3.5" fill="#10b981" />
+        <circle cx="840" cy="110" r="3.5" fill="#10b981" />
+        <circle cx="990" cy="190" r="3.5" fill="#10b981" />
+        <circle cx="1180" cy="240" r="3.5" fill="#10b981" />
+      </svg>
+    </div>
+
+    <div class="container hero-content">
+      <div class="hero-badge-pill">
+        <span class="pulse-dot"></span>
+        <span>Tamil Nadu Smart Urban Innovation &bull; 24 Active LoRaWAN IoT Nodes</span>
+      </div>
+
+      <h1 class="hero-title">
+        EcoWay <span class="text-gradient">TVM</span>
+      </h1>
+
+      <p class="hero-tagline">
+        Smart Air. Smart Mobility. A Greener Tiruvannamalai.
+      </p>
+
+      <p class="hero-subtitle">
+        An AI-powered environmental telemetry and intelligent transit orchestration platform designed for the sacred temple city of Tiruvannamalai. Real-time AQI monitoring, deep predictive pollution forecasting, automated waste-burning detection, and dynamic pilgrim mobility management.
+      </p>
+
+      <div class="hero-cta-group">
+        <a href="#dashboard" class="btn-primary-hero">
+          <i class="fa-solid fa-gauge-high"></i>
+          <span>View Live Dashboard</span>
+        </a>
+        <a href="#simulation-center" class="btn-secondary-hero">
+          <i class="fa-solid fa-sliders"></i>
+          <span>Launch AI Scenario Simulator</span>
+        </a>
+      </div>
+
+      <!-- Quick City Telemetry Ticker -->
+      <div class="hero-stats-strip">
+        <div class="hero-stat-card">
+          <div class="hero-stat-label">City Average AQI</div>
+          <div class="hero-stat-value" id="heroAvgAqi">72 <span style="font-size: 0.9rem; font-weight: 500; color: #10b981;">Good/Mod</span></div>
+          <div class="hero-stat-desc"><i class="fa-solid fa-shield-halved"></i> 4 Sectors Synchronized</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-label">Active IoT Telemetry</div>
+          <div class="hero-stat-value" id="heroActiveNodes">24/24 <span style="font-size: 0.9rem; font-weight: 500; color: #10b981;">100%</span></div>
+          <div class="hero-stat-desc"><i class="fa-solid fa-wifi"></i> ESP32 + LoRa Gateway</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-label">AI Forecast Accuracy</div>
+          <div class="hero-stat-value">94.6% <span style="font-size: 0.9rem; font-weight: 500; color: #06b6d4;">R²: 0.92</span></div>
+          <div class="hero-stat-desc"><i class="fa-solid fa-microchip"></i> Bi-LSTM Time-Series</div>
+        </div>
+        <div class="hero-stat-card">
+          <div class="hero-stat-label">Girivalam Air Quality</div>
+          <div class="hero-stat-value" id="heroGirivalamAqi">42 <span style="font-size: 0.9rem; font-weight: 500; color: #10b981;">Clean</span></div>
+          <div class="hero-stat-desc"><i class="fa-solid fa-person-walking"></i> 14 km Sacred Path</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Interactive AI Scenario Simulator Control Bar
+       ========================================================================== -->
+  <div class="container simulation-bar-wrapper" id="simulation-center">
+    <div class="glass-panel simulation-panel">
+      <div class="sim-header">
+        <div class="sim-title-group">
+          <i class="fa-solid fa-wand-magic-sparkles" style="color: var(--emerald-primary); font-size: 1.4rem;"></i>
+          <div>
+            <h3>Interactive IoT & AI Scenario Simulator</h3>
+            <p>Trigger real-world conditions to observe live system telemetry, AI predictive risk, and emergency responses</p>
+          </div>
+        </div>
+        <div class="sim-status-chip" id="simActiveStateChip">
+          <span class="pulse-dot"></span>
+          <span id="simStateLabel">Scenario: Baseline Normal</span>
+        </div>
+      </div>
+
+      <div class="sim-buttons-grid">
+        <button class="btn-sim btn-sim-reset active" id="btnSimReset" title="Restore calibrated baseline conditions across all 4 sectors">
+          <i class="fa-solid fa-rotate-left"></i>
+          <span>Normal Baseline</span>
+        </button>
+
+        <button class="btn-sim btn-sim-spike" id="btnSimSpike" title="Simulate rapid particulate spike and thermal inversion">
+          <i class="fa-solid fa-smog"></i>
+          <span>Pollution Spike</span>
+        </button>
+
+        <button class="btn-sim btn-sim-traffic" id="btnSimTraffic" title="Simulate heavy vehicular congestion at Central Bus Stand & Chengam Road">
+          <i class="fa-solid fa-traffic-light"></i>
+          <span>High Traffic</span>
+        </button>
+
+        <button class="btn-sim btn-sim-crowd" id="btnSimCrowd" title="Simulate Pournami / Full Moon sacred crowd rush along Girivalam & Temple">
+          <i class="fa-solid fa-users-viewfinder"></i>
+          <span>High Crowd</span>
+        </button>
+
+        <button class="btn-sim btn-sim-waste" id="btnSimWaste" title="Simulate open biomass and garbage combustion along highway borders">
+          <i class="fa-solid fa-fire"></i>
+          <span>Waste Burning</span>
+        </button>
+      </div>
+    </div>
+  </div>
+
+  <!-- ==========================================================================
+       Live Environmental Dashboard Section
+       ========================================================================== -->
+  <section class="dashboard-section" id="dashboard">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-satellite"></i> Telemetry Grid</span>
+        <h2 class="section-title">Live Environmental & Mobility Telemetry</h2>
+        <p class="section-desc">Continuous multi-sensor readings transmitting via LoRaWAN from Tiruvannamalai's critical transit nodes and sacred precincts.</p>
+      </div>
+
+      <!-- 4 Monitoring Locations Tabs -->
+      <div class="location-tabs-bar" role="tablist">
+        <button class="tab-location-btn active" data-location="temple" id="tabTemple">
+          <i class="fa-solid fa-gopuram"></i>
+          <span>Arunachaleswarar Temple</span>
+          <span class="location-badge" id="badgeTempleAqi">AQI 68</span>
+        </button>
+
+        <button class="tab-location-btn" data-location="girivalam" id="tabGirivalam">
+          <i class="fa-solid fa-person-walking-arrow-right"></i>
+          <span>Girivalam Road</span>
+          <span class="location-badge" id="badgeGirivalamAqi">AQI 42</span>
+        </button>
+
+        <button class="tab-location-btn" data-location="busstand" id="tabBusstand">
+          <i class="fa-solid fa-bus-simple"></i>
+          <span>Central Bus Stand</span>
+          <span class="location-badge" id="badgeBusstandAqi">AQI 94</span>
+        </button>
+
+        <button class="tab-location-btn" data-location="chengam" id="tabChengam">
+          <i class="fa-solid fa-truck-moving"></i>
+          <span>Chengam Road</span>
+          <span class="location-badge" id="badgeChengamAqi">AQI 82</span>
+        </button>
+      </div>
+
+      <!-- Active Location Metadata Banner -->
+      <div class="current-location-banner">
+        <div class="location-title-wrap">
+          <h3 id="currentLocTitle">
+            <i class="fa-solid fa-location-dot" style="color: var(--emerald-primary);"></i>
+            <span>Arunachaleswarar Temple</span>
+          </h3>
+          <p id="currentLocSubtitle">East Car Street & Raja Gopuram Precinct &bull; Heritage High-Footfall Zone</p>
+        </div>
+        <div class="location-telemetry-meta">
+          <span><i class="fa-solid fa-mountain"></i> Elev: <strong id="currentLocElev">162m</strong></span>
+          <span><i class="fa-solid fa-compass"></i> GPS: <strong id="currentLocGps">12.2253° N, 79.0677° E</strong></span>
+          <span><i class="fa-solid fa-clock"></i> Updated: <strong id="currentLocTime">Just now</strong></span>
+        </div>
+      </div>
+
+      <!-- Live Telemetry Metric Cards Grid -->
+      <div class="metrics-grid">
+        <!-- 1. Air Quality Index (AQI) Card -->
+        <div class="glass-panel metric-card" style="--card-accent: var(--status-moderate);">
+          <div class="metric-header">
+            <div class="metric-title">
+              <i class="fa-solid fa-wind"></i>
+              <span>Air Quality Index (AQI)</span>
+            </div>
+            <span class="metric-pill pill-moderate" id="cardAqiPill">Moderate</span>
+          </div>
+          <div class="metric-body">
+            <div class="metric-value-wrap">
+              <div class="metric-huge-number" id="cardAqiValue">68</div>
+              <div class="metric-unit">AQI-IN</div>
+            </div>
+            <!-- Circular Gauge -->
+            <div class="aqi-gauge-visual">
+              <svg viewBox="0 0 80 80">
+                <circle class="gauge-bg" cx="40" cy="40" r="34" />
+                <circle class="gauge-fill" id="cardAqiGaugeCircle" cx="40" cy="40" r="34" />
+              </svg>
+            </div>
+          </div>
+          <div class="metric-progress-track">
+            <div class="metric-progress-bar" id="cardAqiBar" style="width: 27%;"></div>
+          </div>
+          <div class="metric-footer-strip">
+            <span>WHO Baseline: &le; 50 AQI</span>
+            <span id="cardAqiHealthAdvice">Acceptable air quality</span>
+          </div>
+        </div>
+
+        <!-- 2. PM2.5 & PM10 Particulate Matter -->
+        <div class="glass-panel metric-card" style="--card-accent: #06b6d4;">
+          <div class="metric-header">
+            <div class="metric-title">
+              <i class="fa-solid fa-smog"></i>
+              <span>Particulate Matter (PM2.5 / PM10)</span>
+            </div>
+            <span class="metric-pill" id="cardPmPill">Optical Laser</span>
+          </div>
+          <div class="metric-body">
+            <div class="metric-value-wrap">
+              <div class="metric-huge-number" id="cardPm25Value">28.4</div>
+              <div class="metric-unit">&micro;g/m&sup3;</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">PM10 Coarse</span>
+              <strong style="font-size: 1.4rem; color: #fff;" id="cardPm10Value">52.1</strong>
+              <span style="font-size: 0.75rem; color: var(--text-dim);">&micro;g/m&sup3;</span>
+            </div>
+          </div>
+          <div class="metric-progress-track">
+            <div class="metric-progress-bar" id="cardPmBar" style="width: 32%; background: #06b6d4;"></div>
+          </div>
+          <div class="metric-footer-strip">
+            <span>Laser sensor PMS7003</span>
+            <span>NAAQS Standard: 60 &micro;g/m&sup3;</span>
+          </div>
+        </div>
+
+        <!-- 3. Ambient Temperature & Relative Humidity -->
+        <div class="glass-panel metric-card" style="--card-accent: #f59e0b;">
+          <div class="metric-header">
+            <div class="metric-title">
+              <i class="fa-solid fa-temperature-half"></i>
+              <span>Ambient Temp &amp; Humidity</span>
+            </div>
+            <span class="metric-pill" style="color: #fde68a; border-color: rgba(245, 158, 11, 0.4);">Thermo-Hygro</span>
+          </div>
+          <div class="metric-body">
+            <div class="metric-value-wrap">
+              <div class="metric-huge-number" id="cardTempValue">31.2</div>
+              <div class="metric-unit">&deg;C</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Relative Humidity</span>
+              <strong style="font-size: 1.4rem; color: #38bdf8;" id="cardHumidityValue">58%</strong>
+            </div>
+          </div>
+          <div class="metric-progress-track">
+            <div class="metric-progress-bar" id="cardHumidityBar" style="width: 58%; background: #f59e0b;"></div>
+          </div>
+          <div class="metric-footer-strip">
+            <span>Heat Index: <span id="cardHeatIndex">34.1&deg;C</span></span>
+            <span>Dew Point: 21.8&deg;C</span>
+          </div>
+        </div>
+
+        <!-- 4. Traffic Congestion Level -->
+        <div class="glass-panel metric-card" style="--card-accent: #eab308;">
+          <div class="metric-header">
+            <div class="metric-title">
+              <i class="fa-solid fa-car-side"></i>
+              <span>Traffic Congestion Level</span>
+            </div>
+            <span class="metric-pill" id="cardTrafficPill">Medium</span>
+          </div>
+          <div class="metric-body">
+            <div class="metric-value-wrap">
+              <div class="metric-huge-number" id="cardTrafficLevel">Medium</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Avg Transit Speed</span>
+              <strong style="font-size: 1.4rem; color: #fff;" id="cardTrafficSpeed">18</strong>
+              <span style="font-size: 0.75rem; color: var(--text-dim);">km/h</span>
+            </div>
+          </div>
+          <div class="metric-progress-track">
+            <div class="metric-progress-bar" id="cardTrafficBar" style="width: 54%; background: #eab308;"></div>
+          </div>
+          <div class="metric-footer-strip">
+            <span>Inflow: <strong id="cardTrafficVehicles">1,100</strong> veh/h</span>
+            <span id="cardTrafficAdvice">Flow normalized</span>
+          </div>
+        </div>
+
+        <!-- 5. Crowd Density & Pedestrian Footfall -->
+        <div class="glass-panel metric-card" style="--card-accent: #a855f7;">
+          <div class="metric-header">
+            <div class="metric-title">
+              <i class="fa-solid fa-users"></i>
+              <span>Crowd Density &amp; Footfall</span>
+            </div>
+            <span class="metric-pill" id="cardCrowdPill">High</span>
+          </div>
+          <div class="metric-body">
+            <div class="metric-value-wrap">
+              <div class="metric-huge-number" id="cardCrowdLevel">High</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Density Index</span>
+              <strong style="font-size: 1.4rem; color: #d8b4fe;" id="cardCrowdDensity">3.2</strong>
+              <span style="font-size: 0.75rem; color: var(--text-dim);">p/m&sup2;</span>
+            </div>
+          </div>
+          <div class="metric-progress-track">
+            <div class="metric-progress-bar" id="cardCrowdBar" style="width: 78%; background: #a855f7;"></div>
+          </div>
+          <div class="metric-footer-strip">
+            <span>Sector count: <strong id="cardCrowdCount">4,200</strong> pilgrims</span>
+            <span id="cardCrowdStatus">Temple queue steady</span>
+          </div>
+        </div>
+
+        <!-- 6. Acoustic Noise & Atmospheric CO2 -->
+        <div class="glass-panel metric-card" style="--card-accent: #10b981;">
+          <div class="metric-header">
+            <div class="metric-title">
+              <i class="fa-solid fa-volume-high"></i>
+              <span>Acoustic Noise &amp; CO2</span>
+            </div>
+            <span class="metric-pill" id="cardNoisePill">Normal</span>
+          </div>
+          <div class="metric-body">
+            <div class="metric-value-wrap">
+              <div class="metric-huge-number" id="cardNoiseValue">64</div>
+              <div class="metric-unit">dB</div>
+            </div>
+            <div style="text-align: right;">
+              <span style="font-size: 0.75rem; color: var(--text-muted); display: block;">Ambient CO2</span>
+              <strong style="font-size: 1.4rem; color: #fff;" id="cardCo2Value">440</strong>
+              <span style="font-size: 0.75rem; color: var(--text-dim);">ppm</span>
+            </div>
+          </div>
+          <div class="metric-progress-track">
+            <div class="metric-progress-bar" id="cardNoiseBar" style="width: 48%; background: #10b981;"></div>
+          </div>
+          <div class="metric-footer-strip">
+            <span>CPCB Day Standard: 65 dB</span>
+            <span>Sensor Node: MQ-135</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       AI Pollution Prediction & Trajectory Forecasting Section
+       ========================================================================== -->
+  <section class="prediction-section" id="ai-prediction">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-microchip"></i> Deep Learning Analytics</span>
+        <h2 class="section-title">AI Pollution Prediction (24–48 Hours)</h2>
+        <p class="section-desc">Trained on multi-year Tiruvannamalai meteorological and vehicular telemetry to forecast particulate accumulation and inversion peaks.</p>
+      </div>
+
+      <div class="prediction-layout">
+        <!-- Main Prediction Line Chart Card -->
+        <div class="glass-panel prediction-chart-card">
+          <div class="chart-header">
+            <div class="chart-title-area">
+              <h3>24-Hour Historical vs 48-Hour AI AQI Forecast</h3>
+              <p>Dynamic trend line with predictive envelope for <span id="chartLocationName" style="color: var(--emerald-light); font-weight: 600;">Arunachaleswarar Temple</span></p>
+            </div>
+            <div class="chart-legend-custom">
+              <div class="legend-item">
+                <span class="legend-line-actual"></span>
+                <span>Past 12h Telemetry</span>
+              </div>
+              <div class="legend-item">
+                <span class="legend-line-pred"></span>
+                <span>AI Forecast (+48h)</span>
+              </div>
+            </div>
+          </div>
+
+          <!-- Chart.js Canvas -->
+          <div class="chart-container-box">
+            <canvas id="predictionChartCanvas"></canvas>
+          </div>
+        </div>
+
+        <!-- AI Metrics Sidebar -->
+        <div class="prediction-sidebar">
+          <!-- Deep Learning Model Specs -->
+          <div class="glass-panel ai-model-card">
+            <div class="ai-engine-badge">
+              <i class="fa-solid fa-brain"></i>
+              <span>Bi-LSTM &bull; TinyML Edge Model</span>
+            </div>
+
+            <div class="ai-metric-item">
+              <span class="ai-metric-label">Current Sector AQI</span>
+              <span class="ai-metric-val" id="predCurrentAqi" style="color: var(--emerald-light);">68 AQI</span>
+            </div>
+
+            <div class="ai-metric-item">
+              <span class="ai-metric-label">Predicted 24h AQI</span>
+              <span class="ai-metric-val" id="pred24hAqi">78 AQI (Moderate)</span>
+            </div>
+
+            <div class="ai-metric-item">
+              <span class="ai-metric-label">Predicted 48h AQI</span>
+              <span class="ai-metric-val" id="pred48hAqi">64 AQI (Normal)</span>
+            </div>
+
+            <div class="ai-metric-item">
+              <span class="ai-metric-label">Model Confidence</span>
+              <span class="ai-metric-val">94.6% (R&sup2;: 0.92)</span>
+            </div>
+
+            <!-- Pollution Risk Percentage Bar -->
+            <div class="risk-meter-wrapper">
+              <div class="risk-meter-header">
+                <span style="color: var(--text-muted); font-size: 0.8rem;">Pollution-Risk Probability</span>
+                <strong id="predRiskPercentText" style="color: #fde047;">36% (Moderate)</strong>
+              </div>
+              <div class="risk-meter-track">
+                <div class="risk-meter-fill" id="predRiskMeterBar" style="width: 36%;"></div>
+              </div>
+            </div>
+          </div>
+
+          <!-- AI Prescriptive Recommendations Box -->
+          <div class="ai-insights-box">
+            <div class="ai-insights-title">
+              <i class="fa-solid fa-lightbulb"></i>
+              <span>AI Automated Urban Recommendation</span>
+            </div>
+            <p class="ai-insights-text" id="predRecommendationText">
+              Atmospheric dispersion conditions remain optimal over Girivalam path. Heavy diesel buses on Chengam road should be monitored between 18:00–21:00 to prevent night particulate trap.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Smart GIS Map Section
+       ========================================================================== -->
+  <section class="map-section" id="smart-map">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-map"></i> Spatial Intelligence</span>
+        <h2 class="section-title">Smart GIS Environmental &amp; Mobility Map</h2>
+        <p class="section-desc">Interactive geo-spatial visualization across Tiruvannamalai with live colored status markers for air quality, traffic choke points, and crowd surges.</p>
+      </div>
+
+      <!-- Map Control Toolbar -->
+      <div class="map-control-bar">
+        <div class="map-filter-group">
+          <span style="font-size: 0.82rem; color: var(--text-muted); margin-right: 4px;">Layers:</span>
+          <button class="map-filter-btn active" data-layer="all">
+            <i class="fa-solid fa-layer-group"></i> All Telemetry
+          </button>
+          <button class="map-filter-btn" data-layer="aqi">
+            <i class="fa-solid fa-wind"></i> AQI Condition
+          </button>
+          <button class="map-filter-btn" data-layer="traffic">
+            <i class="fa-solid fa-traffic-light"></i> Traffic Heat
+          </button>
+          <button class="map-filter-btn" data-layer="crowd">
+            <i class="fa-solid fa-users"></i> Footfall Density
+          </button>
+        </div>
+
+        <div class="map-view-toggle">
+          <button class="map-toggle-opt active" id="btnViewGis">
+            <i class="fa-solid fa-globe"></i> Interactive GIS Map
+          </button>
+          <button class="map-toggle-opt" id="btnViewSchematic">
+            <i class="fa-solid fa-radar"></i> IoT Cyber Radar
+          </button>
+        </div>
+      </div>
+
+      <!-- Map Viewport -->
+      <div class="smart-map-viewport">
+        <!-- 1. Leaflet Interactive Map Container -->
+        <div id="leafletMapContainer"></div>
+
+        <!-- 2. Cyber Radar SVG Schematic View (Seamless Fallback / Alternative View) -->
+        <div id="schematicMapContainer">
+          <svg class="schematic-svg" viewBox="0 0 1000 520" preserveAspectRatio="xMidYMid meet">
+            <!-- Background Grid Lines -->
+            <defs>
+              <pattern id="radarGrid" width="40" height="40" patternUnits="userSpaceOnUse">
+                <path d="M 40 0 L 0 0 0 40" fill="none" stroke="rgba(255,255,255,0.05)" stroke-width="1"/>
+              </pattern>
+            </defs>
+            <rect width="1000" height="520" fill="url(#radarGrid)" />
+
+            <!-- Concentric Range Circles around Arunachala -->
+            <circle cx="500" cy="260" r="80" fill="none" stroke="rgba(16,185,129,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <circle cx="500" cy="260" r="160" fill="none" stroke="rgba(16,185,129,0.15)" stroke-width="1.5" stroke-dasharray="4,4"/>
+            <circle cx="500" cy="260" r="230" fill="none" stroke="rgba(16,185,129,0.1)" stroke-width="1.5"/>
+
+            <!-- Mount Arunachala Central Mountain Silhouette -->
+            <polygon points="500,160 550,260 450,260" fill="rgba(16,185,129,0.25)" stroke="#10b981" stroke-width="2"/>
+            <text x="500" y="278" fill="#34d399" font-size="12" font-weight="700" text-anchor="middle">MT. ARUNACHALA (814m)</text>
+            <circle cx="500" cy="160" r="5" fill="#f59e0b"/>
+
+            <!-- 14 km Girivalam Ring Road Vector Loop -->
+            <ellipse cx="500" cy="260" rx="200" ry="120" fill="none" stroke="#06b6d4" stroke-width="3" stroke-dasharray="6,4"/>
+            <text x="500" y="398" fill="#06b6d4" font-size="11" font-weight="600" text-anchor="middle">14 km Sacred Girivalam Circumambulation Path</text>
+
+            <!-- Vector Nodes for the 4 Locations -->
+            <!-- Temple (East) -->
+            <g class="schematic-node" transform="translate(680, 240)">
+              <circle r="14" fill="rgba(234,179,8,0.2)" stroke="#eab308" stroke-width="2"/>
+              <circle r="6" fill="#eab308"/>
+              <text x="18" y="5" fill="#fff" font-size="12" font-weight="700">Arunachaleswarar Temple (AQI 68)</text>
+            </g>
+
+            <!-- Girivalam West Node -->
+            <g class="schematic-node" transform="translate(320, 260)">
+              <circle r="14" fill="rgba(16,185,129,0.2)" stroke="#10b981" stroke-width="2"/>
+              <circle r="6" fill="#10b981"/>
+              <text x="-190" y="5" fill="#fff" font-size="12" font-weight="700">Girivalam Road (AQI 42)</text>
+            </g>
+
+            <!-- Bus Stand (North-East) -->
+            <g class="schematic-node" transform="translate(740, 160)">
+              <circle r="14" fill="rgba(239,68,68,0.2)" stroke="#ef4444" stroke-width="2"/>
+              <circle r="6" fill="#ef4444"/>
+              <text x="18" y="5" fill="#fff" font-size="12" font-weight="700">Central Bus Stand (AQI 94)</text>
+            </g>
+
+            <!-- Chengam Road (South-West) -->
+            <g class="schematic-node" transform="translate(260, 360)">
+              <circle r="14" fill="rgba(234,179,8,0.2)" stroke="#eab308" stroke-width="2"/>
+              <circle r="6" fill="#eab308"/>
+              <text x="-180" y="5" fill="#fff" font-size="12" font-weight="700">Chengam Road (AQI 82)</text>
+            </g>
+          </svg>
+        </div>
+
+        <!-- Floating Map Legend / Info Panel -->
+        <div class="map-floating-overlay">
+          <div class="map-overlay-title">
+            <i class="fa-solid fa-circle-info" style="color: var(--emerald-light);"></i>
+            <span id="mapOverlayLocationName">Interactive Geo-Location Telemetry</span>
+          </div>
+          <p class="map-overlay-desc" id="mapOverlayStatusText">
+            Click on any pulsating map pin to inspect live sector air metrics, traffic density, and crowd heat in real time.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Smart Traffic Recommendations & Waste-Burning Detection Alerts
+       ========================================================================== -->
+  <section class="mobility-alert-section" id="alerts">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-triangle-exclamation"></i> Municipal Response System</span>
+        <h2 class="section-title">Smart Traffic Recommendations &amp; Waste-Burning Detection</h2>
+        <p class="section-desc">Automated incident response protocols powered by edge optical sensors, thermal imaging, and adaptive city signal timing.</p>
+      </div>
+
+      <div class="split-two-col">
+        <!-- Left: Smart Traffic Advisory & Route Guidance -->
+        <div class="glass-panel traffic-advisory-card">
+          <h3>
+            <i class="fa-solid fa-route" style="color: var(--emerald-primary);"></i>
+            <span>AI Dynamic Traffic Recommendations</span>
+          </h3>
+
+          <div class="traffic-route-items">
+            <!-- Advisory Route 1 -->
+            <div class="route-item">
+              <div class="route-header">
+                <span class="route-name">Girivalam Outer Ring to Temple</span>
+                <span class="route-priority-badge priority-high" id="rec1Priority">High Priority</span>
+              </div>
+              <p class="route-advice" id="rec1Advice">
+                Divert heavy commercial tourist buses to Satellite Terminal B (Tindivanam Road). Keep inner ring pedestrian-only.
+              </p>
+              <div class="route-meta">
+                <span><i class="fa-solid fa-clock-rotate-left"></i> Delay Saving: <strong id="rec1Saving">-22 mins</strong></span>
+                <span><i class="fa-solid fa-leaf"></i> Emission Reduction: <strong id="rec1Co2">-38% CO2</strong></span>
+              </div>
+            </div>
+
+            <!-- Advisory Route 2 -->
+            <div class="route-item">
+              <div class="route-header">
+                <span class="route-name">Central Bus Stand &rarr; Raja Gopuram Axis</span>
+                <span class="route-priority-badge priority-medium" id="rec2Priority">Medium Priority</span>
+              </div>
+              <p class="route-advice" id="rec2Advice">
+                Enable Dynamic Green Wave on Pavazhakundru link road. Pedestrian priority signal cycle extended to 45 seconds.
+              </p>
+              <div class="route-meta">
+                <span><i class="fa-solid fa-clock-rotate-left"></i> Delay Saving: <strong id="rec2Saving">-14 mins</strong></span>
+                <span><i class="fa-solid fa-leaf"></i> Stop-and-Go Relief: <strong id="rec2Co2">-25% Exhaust</strong></span>
+              </div>
+            </div>
+
+            <!-- Advisory Route 3 -->
+            <div class="route-item">
+              <div class="route-header">
+                <span class="route-name">Chengam Highway Bypass Corridor</span>
+                <span class="route-priority-badge priority-critical" id="rec3Priority">Critical Diversion</span>
+              </div>
+              <p class="route-advice" id="rec3Advice">
+                Enforce bypass freight diversion. AQI sensor #09 detected particulate hotspot near bypass entrance.
+              </p>
+              <div class="route-meta">
+                <span><i class="fa-solid fa-clock-rotate-left"></i> Delay Saving: <strong id="rec3Saving">-31 mins</strong></span>
+                <span><i class="fa-solid fa-leaf"></i> Footprint Relief: <strong id="rec3Co2">-45% PM2.5</strong></span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Right: Waste-Burning Detection Alerts -->
+        <div class="glass-panel waste-alert-card">
+          <div style="display: flex; align-items: center; justify-content: space-between; margin-bottom: 20px;">
+            <h3 style="margin-bottom: 0;">
+              <i class="fa-solid fa-fire-burner" style="color: #ef4444;"></i>
+              <span>Waste-Burning AI Incident Alerts</span>
+            </h3>
+            <span class="metric-pill pill-severe" id="incidentsActiveCount">2 Active</span>
+          </div>
+
+          <div class="incidents-container" id="incidentsContainer">
+            <!-- Incidents rendered dynamically from data.js -->
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Festival Mode: Karthigai Deepam Special Protocol Showcase
+       ========================================================================== -->
+  <section class="festival-showcase-section" id="festival-mode">
+    <div class="container">
+      <div class="festival-banner-card">
+        <div class="festival-content-grid">
+          <div class="festival-info">
+            <h3>
+              <i class="fa-solid fa-fire-flame-curved"></i>
+              <span>Karthigai Deepam Festival Smart Mode</span>
+            </h3>
+            <p>
+              During Karthigai Deepam, over <strong>2.5 million devotees</strong> perform the holy Girivalam around Mount Arunachala. EcoWay TVM's specialized Festival Mode orchestrates smart crowd evacuation, mist cannon cooling, electric shuttle tracking, and smoke dispersion around the sacred peak.
+            </p>
+            <div class="festival-features-list">
+              <div class="feat-item"><i class="fa-solid fa-check"></i> 14 km Pedestrian Green Corridor</div>
+              <div class="feat-item"><i class="fa-solid fa-check"></i> Satellite Parking Automated Diverters</div>
+              <div class="feat-item"><i class="fa-solid fa-check"></i> 16 Emergency Medical Telemetry Camps</div>
+              <div class="feat-item"><i class="fa-solid fa-check"></i> Real-time Camphor &amp; Deepam Air Scrubbers</div>
+            </div>
+          </div>
+
+          <div class="festival-action-box">
+            <h4>Festival Protocol Control</h4>
+            <p id="festivalStatusNotice">Currently in Standard Operational State. Activate to test full 2.5M pilgrim surge protocols.</p>
+            <button class="btn-festival-activate" id="btnToggleFestivalBanner">
+              <i class="fa-solid fa-fire"></i>
+              <span id="festivalBtnText">Activate Karthigai Deepam Mode</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       About & IoT System Architecture Section
+       ========================================================================== -->
+  <section class="about-section" id="about">
+    <div class="container">
+      <div class="section-header">
+        <span class="section-tag"><i class="fa-solid fa-network-wired"></i> Engineering &amp; Architecture</span>
+        <h2 class="section-title">System Architecture &amp; Methodology</h2>
+        <p class="section-desc">Designed as a production-grade IoT &amp; AI Smart City prototype for Tiruvannamalai Municipality and Tamil Nadu Environmental Protection Board.</p>
+      </div>
+
+      <div class="architecture-grid">
+        <!-- Layer 1 -->
+        <div class="glass-panel arch-layer-card">
+          <div class="arch-icon"><i class="fa-solid fa-microchip"></i></div>
+          <div class="arch-title">Edge IoT Nodes</div>
+          <div class="arch-subtitle">Layer 1 &bull; Hardware Sensing</div>
+          <p class="arch-desc">
+            Solar-powered ESP32 nodes equipped with PMS7003 optical laser dust sensors, MQ-135 gas analyzers, and DHT22 thermo-hygrometers stationed at key transit intersections.
+          </p>
+        </div>
+
+        <!-- Layer 2 -->
+        <div class="glass-panel arch-layer-card">
+          <div class="arch-icon"><i class="fa-solid fa-tower-broadcast"></i></div>
+          <div class="arch-title">LoRaWAN Gateway</div>
+          <div class="arch-subtitle">Layer 2 &bull; Long-Range RF</div>
+          <p class="arch-desc">
+            Ultra-low-power SX1276 telemetry mesh covering the entire 14 km Girivalam ring with 868 MHz frequency band and 99.8% packet reliability even during power grid outages.
+          </p>
+        </div>
+
+        <!-- Layer 3 -->
+        <div class="glass-panel arch-layer-card">
+          <div class="arch-icon"><i class="fa-solid fa-brain"></i></div>
+          <div class="arch-title">AI Predictive Core</div>
+          <div class="arch-subtitle">Layer 3 &bull; Deep Learning</div>
+          <p class="arch-desc">
+            Bidirectional LSTM neural network forecasting 24–48 hour AQI trajectories, particulate accumulation hotspots, and early-warning waste-burning anomalies.
+          </p>
+        </div>
+
+        <!-- Layer 4 -->
+        <div class="glass-panel arch-layer-card">
+          <div class="arch-icon"><i class="fa-solid fa-laptop-code"></i></div>
+          <div class="arch-title">Civic Command Center</div>
+          <div class="arch-subtitle">Layer 4 &bull; Web Platform</div>
+          <p class="arch-desc">
+            Responsive real-time civic portal with GIS heat mapping, automated signal timing recommendations, and municipal squad rapid dispatch triggers.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ==========================================================================
+       Site Footer
+       ========================================================================== -->
+  <footer class="site-footer">
+    <div class="container">
+      <div class="footer-top">
+        <div class="footer-brand">
+          <h4 style="display: flex; align-items: center; gap: 10px;">
+            <img src="assets/logo.jpg" alt="EcoWay TVM Logo" class="footer-logo-img">
+            <span>EcoWay TVM</span>
+          </h4>
+          <p>
+            EcoWay TVM – AI-Based Environmental Monitoring &amp; Smart Mobility System. Empowering temple town Tiruvannamalai with real-time IoT air telemetry, clean transit routing, and sustainable civic governance.
+          </p>
+          <div class="footer-sdg-pills">
+            <span class="sdg-pill"><i class="fa-solid fa-seedling"></i> UN SDG 11: Sustainable Cities</span>
+            <span class="sdg-pill"><i class="fa-solid fa-earth-americas"></i> UN SDG 13: Climate Action</span>
+            <span class="sdg-pill"><i class="fa-solid fa-heart-pulse"></i> UN SDG 3: Good Health</span>
+          </div>
+        </div>
+
+        <div class="footer-links">
+          <h5>Monitored Sectors</h5>
+          <ul>
+            <li><a href="#dashboard" onclick="selectLocation('temple')">Arunachaleswarar Temple</a></li>
+            <li><a href="#dashboard" onclick="selectLocation('girivalam')">Girivalam 14 km Path</a></li>
+            <li><a href="#dashboard" onclick="selectLocation('busstand')">Central Bus Stand Hub</a></li>
+            <li><a href="#dashboard" onclick="selectLocation('chengam')">Chengam Road Highway</a></li>
+          </ul>
+        </div>
+
+        <div class="footer-links">
+          <h5>Emergency &amp; Civic Helplines</h5>
+          <ul>
+            <li><a href="javascript:void(0)">Tiruvannamalai Municipality: 1800-425-1334</a></li>
+            <li><a href="javascript:void(0)">TNPCB Environmental Control: 04175-233140</a></li>
+            <li><a href="javascript:void(0)">Traffic Police Helpline: 103 / 112</a></li>
+            <li><a href="javascript:void(0)">Fire &amp; Rescue Services: 101</a></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="footer-bottom">
+        <div>
+          &copy; 2026 <strong>EcoWay TVM</strong> – AI-Based Environmental Monitoring &amp; Smart Mobility System. College Capstone &amp; Smart Cities Prototype.
+        </div>
+        <div>
+          Built with HTML5 &bull; CSS3 &bull; Vanilla JS &bull; Chart.js &bull; Leaflet GIS
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <!-- Toast Notification Container -->
+  <div class="toast-container" id="toastContainer"></div>
+
+  <!-- ==========================================================================
+       Scripts: Leaflet, Chart.js, Data Engine & App Logic
+       ========================================================================== -->
+  <!-- Leaflet JS -->
+  <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin=""></script>
+  <!-- Chart.js -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.1/dist/chart.umd.min.js"></script>
+
+  <!-- Project Modules -->
+  <script src="js/data.js"></script>
+  <script src="js/app.js"></script>
+</body>
+</html>
